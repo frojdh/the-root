@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: helloworld-service
+
+server:
+  port: 8001

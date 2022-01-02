@@ -1,0 +1,6 @@
+<h2>-- Helloworld testpage --</h2>
+<form>
+  <input type='input' name="name" [(ngModel)]="name" (keyup.enter)="sayHello()">
+  <button type="button" (click)="sayHello()">Hello</button>
+</form>
+<pre *ngIf="receivedMessageExist()">{{receivedMessage | json}}</pre>
