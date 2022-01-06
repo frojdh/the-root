@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.json
 class HelloworldService (var log: Logger) {
 
     suspend fun hello(request: ServerRequest): ServerResponse =
-        ServerResponse.ok().json().bodyValueAndAwait(HelloworldMessage("Hello Jon Doe!"))
+        ServerResponse.ok().json().bodyValueAndAwait(HelloworldMessage("Hello Jon Doe!!"))
 
     suspend fun helloWithName(request: ServerRequest): ServerResponse =
         ServerResponse.ok().json().bodyValueAndAwait(HelloworldMessage("Hello " + request.pathVariable("name")))
