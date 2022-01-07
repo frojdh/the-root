@@ -15,12 +15,19 @@ repositories {
 	mavenCentral()
 }
 
+extra["springCloudVersion"] = "2021.0.0"
+
+dependencyManagement {
+	imports {
+		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+	}
+}
+
 dependencies {
 	//spring
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springdoc:springdoc-openapi-common:1.5.13")
-	implementation("org.springdoc:springdoc-openapi-webflux-ui:1.5.13")
+	implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	//kotlin
@@ -46,4 +53,10 @@ tasks.withType<Test> {
 
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootBuildImage>("bootBuildImage") {
 	imageName = "alluminate/${project.name}"
+}
+
+apply(plugin = "checkstyle")
+
+configure<CheckstyleExtension> {
+	maxErrors = 10
 }
